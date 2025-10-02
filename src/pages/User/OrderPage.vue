@@ -1,10 +1,15 @@
 <template>
   <div class="product-list-container">
     <h1>Danh Sách Sản Phẩm</h1>
+    <div class="category">
+      <button>
+      </button>
+    </div>
 
     <div class="products-grid">
       <div v-for="product in productList" :key="product.productCode" class="product-card">
-        <img :src="product.Image || 'https://via.placeholder.com/150'" alt="Product Image" />
+
+        <img :src="product.image "/>
         <h3>{{ product.productName }}</h3>
         <p class="price">{{ (product.basePrice ?? 0).toLocaleString('vi-VN') }}₫</p>
       </div>

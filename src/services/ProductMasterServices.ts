@@ -3,7 +3,7 @@ export interface ProductMasterDTO {
   productCode: string;
   productName: string;
   basePrice: number;
-  image: string; // Lưu ý: Backend dùng "Image", nhưng frontend thường dùng "image" lowercase
+  image: string;
   defaultToppingConsumptionQuantity?: number;
   shelfLife?: number;
   isActive?: boolean;
@@ -33,16 +33,7 @@ class ProductMasterService {
         console.error('HTTP error', response.status, response.statusText);
         return [];
       }
-
       const text = await response.text();
-      console.log('Phản hồi thô:', text.substring(0, 200) + '...');
-
-      // Kiểm tra nếu là HTML từ ngrok (miễn phí có thể chèn warning)
-      if (text.includes('<!DOCTYPE html') || text.includes('ngrok')) {
-        console.warn('Phát hiện ngrok warning - không phải JSON. Hãy kiểm tra ngrok hoặc dùng localhost.');
-        return [];
-      }
-
       const data: ProductMasterDTO[] = JSON.parse(text);
       return data;
 
