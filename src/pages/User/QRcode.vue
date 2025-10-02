@@ -22,13 +22,13 @@ export default defineComponent({
       try {
         const selectedTable = await TableMasterService.getSelectedTable();
         if (selectedTable) {
-          qrUrl.value = `https://ume-coffee-3qarnbzkl-simple2k3s-projects.vercel.app/order?tableId=${selectedTable.TableId}&tableName=${encodeURIComponent(selectedTable.TableName)}`;
+          qrUrl.value = `https://github.com/simple2k3/ume-coffee-frontend.git//order?tableId=${selectedTable.TableId}&tableName=${encodeURIComponent(selectedTable.TableName)}`;
         } else {
-          qrUrl.value = 'https://ume-coffee-3qarnbzkl-simple2k3s-projects.vercel.app'; // Fallback
+          qrUrl.value = 'https://github.com/simple2k3/ume-coffee-frontend.git/'; // Fallback
         }
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu bàn:', error);
-        qrUrl.value = 'https://ume-coffee-3qarnbzkl-simple2k3s-projects.vercel.app'; // Fallback
+        qrUrl.value = 'https://github.com/simple2k3/ume-coffee-frontend.git/'; // Fallback
       }
     });
 
