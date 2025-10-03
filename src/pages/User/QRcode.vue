@@ -19,18 +19,19 @@ export default defineComponent({
     const qrUrl = ref('');
 
     onMounted(async () => {
-      try {
-        const selectedTable = await TableMasterService.getSelectedTable();
-        if (selectedTable) {
-          qrUrl.value = `https://github.com/simple2k3/ume-coffee-frontend.git//order?tableId=${selectedTable.TableId}&tableName=${encodeURIComponent(selectedTable.TableName)}`;
-        } else {
-          qrUrl.value = 'https://github.com/simple2k3/ume-coffee-frontend.git/'; // Fallback
+        try {
+          const selectedTable = await TableMasterService.getSelectedTable();
+          if (selectedTable) {
+            qrUrl.value = `https://ume-coffee-frontend.vercel.app/order?tableId=${selectedTable.TableId}&tableName=${encodeURIComponent(selectedTable.TableName)}`;
+          } else {
+            qrUrl.value = 'https://ume-coffee-frontend.vercel.app'; // fallback
+          }
+        } catch (error) {
+          console.error('Lỗi khi lấy dữ liệu bàn:', error);
+          qrUrl.value = 'https://ume-coffee-frontend.vercel.app'; // fallback
         }
-      } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu bàn:', error);
-        qrUrl.value = 'https://github.com/simple2k3/ume-coffee-frontend.git/'; // Fallback
-      }
-    });
+      });
+
 
     return { qrUrl };
   },

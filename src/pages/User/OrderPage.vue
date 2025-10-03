@@ -1,6 +1,5 @@
 <template>
   <div class="product-list-container">
-    <!-- Header + Nút menu -->
     <div class="cf">
       <h1>UME COFFEE</h1>
       <button class="menu-btn" @click="toggleMenu">☰</button>
@@ -16,7 +15,7 @@
       </ul>
     </div>
 
-    <!-- Overlay (nền mờ) -->
+    <!-- Overlay-->
     <div v-if="isOpen" class="overlay" @click="closeMenu"></div>
 
     <!-- Danh sách sản phẩm -->
@@ -27,8 +26,6 @@
         <p class="price">{{ (product.basePrice ?? 0).toLocaleString('vi-VN') }}₫</p>
       </div>
     </div>
-
-    <p v-if="productList.length === 0">Chưa có sản phẩm nào.</p>
   </div>
 </template>
 
@@ -85,9 +82,10 @@ h1 {
 /* Grid sản phẩm */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 20px;
+  text-align: center;
 }
 
 .product-card {
@@ -155,7 +153,7 @@ h1 {
   cursor: pointer;
 }
 
-/* Overlay */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -178,7 +176,7 @@ h1 {
   }
 
   .sidebar {
-    width: 100%;
+    width: 30%;
     left: -100%;
   }
   .sidebar.open {
